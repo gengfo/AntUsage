@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<project name="Test Get File" default="all" basedir=".">
+
+	<target name="download">
+		<get src="http://i2isd/sites/isdc_SHA/IPS-IRIS4/Requirement/Error%20Msg/ARP%20Error%20Message.xls" dest="my.xls"/>		
+	</target>
+	
+	
+	<target name="handleErrMsg">
+		<exec executable="python" output="handleErrMsg.txt">
+		<arg line="ErrorMsg.py"/>
+	</exec>
+
+	
+	</target>
+	
+	
+	
+	
+	
+	<target name="all">
+		
+		<antcall target="download" />
+		<antcall target="handleErrMsg" />
+		
+	
+	</target>
+	
+</project>
