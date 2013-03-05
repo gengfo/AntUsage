@@ -9,15 +9,21 @@
 	
 	<target name="handleErrMsg">
 		<exec executable="python" output="handleErrMsg.txt">
-		<arg line="ErrorMsg.py"/>
-	</exec>
-
-	
+			<arg line="ErrorMsg.py"/>
+		</exec>
 	</target>
 	
-	
-	
-	
+	<target name="update-err-msg-python">
+		<copy file="../errMsg/ErrorMsg.py" tofile="myErrorMsg.py" />	
+		
+		<echo message = "${basedir}"/>
+		<replace file="myErrorMsg.py">
+			<replacefilter token="D:\project-git\\arp-iris4\ARP_APP_Server\ARP_Build\Build-ErrMsg-XLS\ARP Error Message.xls" value="${basedir}\my.xls" />
+			<replacefilter token="D:/project-git/arp-iris4/ARP_APP_Server/ARP_WAR/WebContent/js/com.oocl.ir4.arp.web/common/ErrorMessage.js" value="" />
+			
+		</replace>
+		
+	</target>
 	
 	<target name="all">
 		
